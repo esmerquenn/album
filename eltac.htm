@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        width: 90vw;
+      }
+      .container > div {
+        /* transition: flex-grow 0.5s ease-in 0.4s; */
+        flex: 0.5;
+        height: 85vh;
+        border-radius: 50px;
+        color: #fff;
+        margin: 10px;
+        transition: all 0.7s ease-in;
+        position: relative;
+      }
+      h4 {
+        font: normal 1.2em arial;
+        position: absolute;
+        bottom: 30px;
+        left: 20px;
+        margin: 0;
+        opacity: 0;
+      }
+      .img.active {
+        flex: 5;
+      }
+      .img.active h4 {
+        opacity: 1;
+        transition: opacity 0.3s ease-in 0.4s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+
+    <script>
+      let arr = ["img1", "img2", "img3", "img4", "img5"];
+      let container = document.querySelector(".container");
+      let kod = "";
+      arr.forEach((item, i) => {
+        kod += `<div onclick="flex(this)" class="img ${
+          i == 0 ? "active" : ""
+        }" style="background: url('img/${item}.jpg') center/cover"><h4>Lorem ipsum dolor sit amet.</h4></div>`;
+      });
+      container.innerHTML = kod;
+
+      function flex(elem) {
+        document.querySelector(".active").classList.remove("active");
+        elem.classList.add("active");
+      }
+    </script>
+  </body>
+</html>
